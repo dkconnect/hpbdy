@@ -43,10 +43,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const targetMonthIndex = 05; // December
   const targetYear = 2025;
   const birthYear = 1999;
+  const startYear = 2015;
 
   let currentDay = 1;
   let currentMonthIndex = 0;
-  let currentYear = birthYear;
+  let currentYear = startYear;
   let currentAge = 0;
 
   const interval = setInterval(() => {
