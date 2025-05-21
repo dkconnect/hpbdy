@@ -24,6 +24,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const yearElement = document.getElementById("year");
   const ageElement = document.getElementById("age");
 
+  // Validate DOM elements
+  if (!dayElement || !monthElement || !yearElement || !ageElement) {
+    console.error("One or more DOM elements not found.");
+    return;
+  }
+
   const months = [
     "January",
     "February",
@@ -40,40 +46,59 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   const targetDay = 28;
-  const targetMonthIndex = 05; // December
+  const targetMonthIndex = 4; // May (zero-indexed)
   const targetYear = 2025;
+  const birthDay = 28;
+  const birthMonthIndex = 4; // May (zero-indexed)
   const birthYear = 1999;
   const startYear = 2015;
 
   let currentDay = 1;
-  let currentMonthIndex = 0;
+  let currentMonthIndex = 0; // January
   let currentYear = startYear;
-  let currentAge = 0;
+
+  // Calculate age based on current animation date
+  function calculateAge() {
+    let age = currentYear - birthYear;
+    if (currentMonthIndex < birthMonthIndex || (currentMonthIndex === birthMonthIndex && currentDay < birthDay)) {
+      age--;
+    }
+    return age;
+  }
+
+  // Validate target date
+  function isValidDate(day, monthIndex, year) {
+    const date = new Date(year, monthIndex, day);
+    return date.getDate() === day && date.getMonth() === monthIndex && date.getFullYear() === year;
+  }
+
+  if (!isValidDate(targetDay, targetMonthIndex, targetYear)) {
+    console.error("Invalid target date.");
+    return;
+  }
 
   const interval = setInterval(() => {
-    // Update day, month, year, and age in the DOM
+    // Update DOM
     dayElement.textContent = currentDay;
     monthElement.textContent = months[currentMonthIndex];
     yearElement.textContent = currentYear;
-    ageElement.textContent = currentAge;
+    ageElement.textContent = calculateAge();
 
-    // Smoothly increment day, month, year, and age
+    // Increment logic
     if (currentDay < targetDay) {
       currentDay++;
     } else if (currentMonthIndex < targetMonthIndex) {
-      currentDay = targetDay; // Fix day
+      currentDay = targetDay;
       currentMonthIndex++;
     } else if (currentYear < targetYear) {
-      currentMonthIndex = targetMonthIndex; // Fix month
+      currentDay = targetDay; // Reset day for new year
+      currentMonthIndex = targetMonthIndex; // Reset month for new year
       currentYear++;
-      currentAge++;
     } else {
-      // Stop animation when target is reached
-      clearInterval(interval);
+      clearInterval(interval); // Stop at target date
     }
-  }, 250); // Smoother speed adjustment
+  }, 250); // 250ms for smooth animation
 });
-
 // animation timeline
 const animationTimeline = () => {
   // split chars that needs to be animated individually
