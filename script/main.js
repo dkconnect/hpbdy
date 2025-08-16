@@ -45,12 +45,12 @@ document.addEventListener("DOMContentLoaded", function () {
     "December",
   ];
 
-  const targetDay = 28;
-  const targetMonthIndex = 4; // May (zero-indexed)
+  const targetDay = 16;
+  const targetMonthIndex = 8; // May (zero-indexed)
   const targetYear = 2025;
-  const birthDay = 28;
-  const birthMonthIndex = 4; // May (zero-indexed)
-  const birthYear = 1999;
+  const birthDay = 16;
+  const birthMonthIndex = 8; // May (zero-indexed)
+  const birthYear = 1988;
   const startYear = 2015;
 
   let currentDay = 1;
