@@ -46,10 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   const targetDay = 16;
-  const targetMonthIndex = 8; // May (zero-indexed)
+  const targetMonthIndex = 7; // May (zero-indexed)
   const targetYear = 2025;
   const birthDay = 16;
-  const birthMonthIndex = 8; // May (zero-indexed)
+  const birthMonthIndex = 7; // May (zero-indexed)
   const birthYear = 1988;
   const startYear = 2020;
 
