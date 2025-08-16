@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const birthDay = 16;
   const birthMonthIndex = 8; // May (zero-indexed)
   const birthYear = 1988;
-  const startYear = 2015;
+  const startYear = 2020;
 
   let currentDay = 1;
   let currentMonthIndex = 0; // January
